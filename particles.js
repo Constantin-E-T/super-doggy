@@ -19,7 +19,7 @@ export class Dust extends Particles {
         this.y = y;
         this.speedX = Math.random();
         this.speedY = Math.random();
-        this.color = 'rgba(217, 30, 24, 0.2';
+        this.color = 'rgba(100, 129, 218, 0.2';
     };
     draw(context) {
         context.beginPath();
@@ -30,7 +30,24 @@ export class Dust extends Particles {
 }
 
 export class Splash extends Particles {
-    
+    constructor(game, x, y){
+        super();
+        this.size = Math.random() * 100 + 100;
+        this.x = x - this.size * 0.4;
+        this.y = y - this.size * 0.5;
+        this.speedX = Math.random() * 6 - 4;
+        this.speedY = Math.random() * 2 + 1;
+        this.gravity = 0;
+        this.image = document.getElementById('fire');
+    }
+    update() {
+        super.update();
+        this.gravity += 0.1;
+        this.y += this.gravity;
+    }
+    draw(context) {
+        context.drawImage(this.image, this.x, this.y, this.size, this.size);
+    }
 }
 
 export class Fire extends Particles {
