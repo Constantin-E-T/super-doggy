@@ -29,8 +29,10 @@ window.addEventListener("load", function () {
       // particles
       this.particles = [];
       this.maxParticles = 50;
+      // collisions
+      this.collisions = [];
       // debug box
-      this.debug = true;
+      this.debug = false;
       // score on collision
       this.score = 0;
       // font color for score
@@ -62,7 +64,11 @@ window.addEventListener("load", function () {
       if (this.particles.length > this.maxParticles) {
         this.particles = this.particles.slice(0, this.maxParticles);
       }
-      
+      // handle collisions sprites
+      this.collisions.forEach((collision, index) => {
+        collision.update(deltaTime);
+        if (collision.markedForDeletion) this.collisions.splice(index, 1);
+      });
     }
     draw(context){
       this.background.draw(context);
@@ -72,7 +78,10 @@ window.addEventListener("load", function () {
       });
       this.particles.forEach(particle => {
         particle.draw(context);
-      })
+      });
+      this.collisions.forEach(collision => {
+        collision.draw(context);
+      });
       this.UI.draw(context);
     }
     addEnemy(){
