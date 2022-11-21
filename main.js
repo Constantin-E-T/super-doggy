@@ -28,6 +28,7 @@ window.addEventListener("load", function () {
       // end
       // particles
       this.particles = [];
+      this.maxParticles = 50;
       // debug box
       this.debug = true;
       // score on collision
@@ -58,7 +59,9 @@ window.addEventListener("load", function () {
         particle.update();
         if (particle.markedForDeletion) this.particles.splice(index, 1);
       });
-      console.log(this.particles);
+      if (this.particles.length > 50) {
+        this.particles = this.particles.slice(0, this.maxParticles);
+      }
     }
     draw(context){
       this.background.draw(context);
