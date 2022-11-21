@@ -1,4 +1,4 @@
-import { Running, Sitting, Jumping, Falling } from "./playerStates.js";
+import { Running, Sitting, Jumping, Falling, Rolling } from "./playerStates.js";
 
 export class Player {
   constructor(game) {
@@ -27,7 +27,13 @@ export class Player {
     //! this.image = player;
     //! states
     // must be the same order as on the playerStates.js const states
-    this.states = [new Sitting(this), new Running(this), new Jumping(this), new Falling(this)];
+    this.states = [
+        new Sitting(this),
+        new Running(this), 
+        new Jumping(this), 
+        new Falling(this),
+        new Rolling(this),
+      ];
     // end
     this.currentState = this.states[0];
     this.currentState.enter();

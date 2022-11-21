@@ -1,6 +1,6 @@
 export class InputHandler{
     constructor(game){
-        this.game = game;
+        this.game = game; 
         this.keys = [];
         window.addEventListener('keydown', e => {
             if ((   e.key === 'ArrowDown' ||
