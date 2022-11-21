@@ -28,15 +28,14 @@ export class Player {
     //! states
     // must be the same order as on the playerStates.js const states
     this.states = [
-        new Sitting(this),
-        new Running(this), 
-        new Jumping(this), 
-        new Falling(this),
-        new Rolling(this),
+        new Sitting(this.game),
+        new Running(this.game), 
+        new Jumping(this.game), 
+        new Falling(this.game),
+        new Rolling(this.game),
       ];
     // end
-    this.currentState = this.states[0];
-    this.currentState.enter();
+    
     //! end 
   }
   update(input, deltaTime) {
