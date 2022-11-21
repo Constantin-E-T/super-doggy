@@ -26,6 +26,8 @@ window.addEventListener("load", function () {
       this.enemyTimer = 0;
       this.enemyInterval = 1000;
       // end
+      // particles
+      this.particles = [];
       // debug box
       this.debug = true;
       // score on collision
@@ -33,6 +35,8 @@ window.addEventListener("load", function () {
       // font color for score
       this.fontColor = 'black';
       // end
+      this.player.currentState = this.player.states[0];
+      this.player.currentState.enter();
     }
     update(deltaTime) {
       this.background.update();
@@ -48,7 +52,13 @@ window.addEventListener("load", function () {
         enemy.update(deltaTime);
         // remove enemy from array after passing left side of the display
         if (enemy.markedForDeletion) this.enemies.splice(this.enemies.indexOf(enemy), 1);
-      })
+      });
+      // handle particle
+      this.particles.forEach((particle, index) => {
+        particle.update();
+        if (particle.markedForDeletion) this.particles.splice(index, 1);
+      });
+      console.log(this.particles);
     }
     draw(context){
       this.background.draw(context);
@@ -56,6 +66,9 @@ window.addEventListener("load", function () {
       this.enemies.forEach(enemy => {
         enemy.draw(context);
       });
+      this.particles.forEach(particle => {
+        particle.draw(context);
+      })
       this.UI.draw(context);
     }
     addEnemy(){
@@ -67,12 +80,12 @@ window.addEventListener("load", function () {
       // end
       // flying enemy
       this.enemies.push(new FlyingEnemy(this))
-      console.log(this.enemies);
+      // console.log(this.enemies);
       // end
     }
   }
   const game = new Game(canvas.width, canvas.height);
-  console.log(game);
+  // console.log(game);
 
   //! animate sprite by frames
   let lastTime = 0
