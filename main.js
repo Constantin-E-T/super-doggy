@@ -59,9 +59,10 @@ window.addEventListener("load", function () {
         particle.update();
         if (particle.markedForDeletion) this.particles.splice(index, 1);
       });
-      if (this.particles.length > 50) {
+      if (this.particles.length > this.maxParticles) {
         this.particles = this.particles.slice(0, this.maxParticles);
       }
+      
     }
     draw(context){
       this.background.draw(context);
