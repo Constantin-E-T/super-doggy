@@ -29,13 +29,13 @@ export class UI {
         if (this.game.gameOver) {
             context.textAlign = 'center';
             context.font = this.fontSize * 2 + 'px ' + this.fontFamily;
-            if (this.game.score > 5) {
+            if (this.game.score > this.game.winningScore) {
                 context.fillText('BRAVO ANDREEA', this.game.width * .5, this.game.height * .5 - 30);
                 context.font = this.fontSize * 2 + 'px ' + this.fontFamily;
                 context.fillText('The creatures of the night are affrayed of YOU!!!', this.game.width * .5, this.game.height * .5 + 80);
                 
             } else {
-                context.fillText('Love at first bite?', this.game.width * .5, this.game.height * .5 - 30);
+                context.fillText('Love at first bite?  To win you need more than 20', this.game.width * .5, this.game.height * .5 - 30);
                 context.font = this.fontSize * 1.5 + 'px ' + this.fontFamily;
                 context.fillText('Nope. Better luck next time!!!', this.game.width * .5, this.game.height * .5 + 80);
 

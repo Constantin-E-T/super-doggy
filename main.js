@@ -39,6 +39,7 @@ window.addEventListener("load", function () {
       // end
       // score on collision
       this.score = 0;
+      this.winningScore = 10;
       // font color for score
       this.fontColor = 'red';
       // lives
@@ -78,7 +79,6 @@ window.addEventListener("load", function () {
       // handle particle
       this.particles.forEach((particle, index) => {
         particle.update();
-        if (particle.markedForDeletion) this.particles.splice(index, 1);
       });
       if (this.particles.length > this.maxParticles) {
         this.particles.length = this.maxParticles;
@@ -86,9 +86,11 @@ window.addEventListener("load", function () {
       // handle collisions sprites
       this.collisions.forEach((collision, index) => {
         collision.update(deltaTime);
-        if (collision.markedForDeletion) this.collisions.splice(index, 1);
       });
       // floatingMessages
+      this.enemies = this.enemies.filter(enemy => !enemy.markedForDeletion);
+      this.particles = this.particles.filter(particle => !particle.markedForDeletion);
+      this.collisions = this.collisions.filter(collision => !collision.markedForDeletion);
       this.floatingMessages = this.floatingMessages.filter(message => !message.markedForDeletion);
     }
     draw(context){

@@ -39,7 +39,7 @@ export class Player {
         new Hit(this.game),
       ];
     // end
-    
+    this.currentState = null;
     //! end 
   }
   update(input, deltaTime) {
@@ -105,6 +105,7 @@ export class Player {
           this.game.floatingMessages.push(new FloatingMessage('+1', enemy.x, enemy.y, 150, 50));
         } else {
           this.setState(6, 0);
+          this.game.score -= 2;
           this.game.lives--;
           if (this.game.lives <= 0) this.game.gameOver = true;
         }
