@@ -19,7 +19,7 @@ export class Dust extends Particles {
         this.y = y;
         this.speedX = Math.random();
         this.speedY = Math.random();
-        this.color = 'rgba(100, 129, 218, 0.2';
+        this.color = 'rgba(231, 109, 137, 0.5)';
     };
     draw(context) {
         context.beginPath();
