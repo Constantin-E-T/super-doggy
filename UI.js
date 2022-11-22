@@ -32,7 +32,7 @@ export class UI {
             if (this.game.score > 5) {
                 context.fillText('BRAVO ANDREEA', this.game.width * .5, this.game.height * .5 - 30);
                 context.font = this.fontSize * 2 + 'px ' + this.fontFamily;
-                context.fillText('What are creature of the night afraid? YOU!!!', this.game.width * .5, this.game.height * .5 + 80);
+                context.fillText('The creatures of the night are affrayed of YOU!!!', this.game.width * .5, this.game.height * .5 + 80);
                 
             } else {
                 context.fillText('Love at first bite?', this.game.width * .5, this.game.height * .5 - 30);
